@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/assets/sunflower_ref.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Miss Sunflower — A Fan Tribute to CEO Lai Souyiek</title>
+    <meta name="description" content="A creative fan-made digital sunflower garden celebrating CEO Lai Souyiek & Miss Sunflower Brand." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app">
+      <!-- Top Bar Navigation -->
+      <header id="top-bar" class="top-bar">
+        <div class="brand-badge">
+          <span class="logo-icon">🌻</span>
+          <span class="logo-title">MISS SUNFLOWER</span>
+          <span class="fan-tag">FAN TRIBUTE</span>
+        </div>
+
+        <div class="top-actions">
+          <button id="sound-toggle-btn" class="pill-btn" aria-label="Toggle Sound">
+            <svg id="sound-icon-on" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
+            <svg id="sound-icon-off" class="hidden" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="1" y1="1" x2="23" y2="23"></line><path d="M9 9v6a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"></path><path d="M17 17a3 3 0 0 0-3-3"></path></svg>
+            <span id="sound-label">Sound: On</span>
+          </button>
+          
+          <button id="replay-btn" class="pill-btn" aria-label="Replay Opening">Replay Bloom ↺</button>
+        </div>
+      </header>
+
+      <!-- Fullscreen WebGL 3D Canvas -->
+      <div id="cinematic-container" class="cinematic-container">
+        <canvas id="webgl-canvas"></canvas>
+        
+        <!-- Soft Vignette & Sunburst Rays -->
+        <div class="cinematic-vignette"></div>
+        <div id="sunburst-layer" class="sunburst-layer"></div>
+
+        <!-- Hero Opening Sequence & Grand CEO Display -->
+        <div id="hero-overlay" class="hero-overlay">
+          <!-- Text Stage 1: Welcome -->
+          <div id="text-stage-1" class="text-stage fade-text">
+            <span class="golden-accent-line"></span>
+            <h1 class="welcome-title">Welcome 🌻</h1>
+          </div>
+          
+          <!-- Text Stage 2: Brand Title -->
+          <div id="text-stage-2" class="text-stage fade-text">
+            <h1 class="hero-brand-title">MISS SUNFLOWER</h1>
+            <p class="hero-ceo-subtitle">By Lai Souyiek</p>
+          </div>
+
+          <!-- Text Stage 3: GRAND CEO REVEAL CARD -->
+          <div id="text-stage-3" class="text-stage fade-text ceo-grand-stage">
+            <div class="ceo-grand-card">
+              <div class="ceo-portrait-hero-wrap">
+                <img src="/assets/ceo.png" alt="CEO Lai Souyiek" class="ceo-portrait-img" />
+                <div class="gold-ring-orbit"></div>
+                <div class="gold-glow-halo"></div>
+              </div>
+
+              <div class="ceo-grand-info">
+                <span class="ceo-honor-badge">FOUNDER & CEO</span>
+                <h2 class="ceo-hero-name">Lai Souyiek</h2>
+                <p class="ceo-hero-title">Miss Sunflower Brand 🌻</p>
+                <p class="hero-garden-sub">“A digital flower garden created with immense pride & admiration by a fan.”</p>
+                
+                <button id="enter-garden-btn" class="minimal-enter-btn">
+                  <span>Explore Fan Garden 🌻</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Start Screen Prompt -->
+        <div id="start-screen" class="start-screen">
+          <div class="start-card">
+            <div class="sunflower-preview-icon">
+              <img src="/assets/ceo.png" alt="CEO Lai Souyiek" class="preview-img" />
+            </div>
+            <h1 class="start-title">Miss Sunflower</h1>
+            <p class="start-tag">CEO Lai Souyiek • Creative Fan Tribute</p>
+            <p class="start-sub">Turn sound on for the best cinematic 3D bloom experience.</p>
+            <button id="begin-experience-btn" class="begin-btn">Experience Bloom 🌻</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Simplified Streamlined Fan Garden Interface -->
+      <div id="garden-interface" class="garden-interface hidden">
+        <!-- Clean Floating Navigation Bar (3 Tabs) -->
+        <nav class="garden-nav">
+          <button class="nav-tab active" data-target="section-ceo">👩‍💼 CEO Lai Souyiek</button>
+          <button class="nav-tab" data-target="section-charity">🇰🇭 Charity Support (ជំនួយបរិច្ចាក)</button>
+          <button class="nav-tab" data-target="section-3d-garden">🌻 3D Studio</button>
+        </nav>
+
+        <!-- Garden Content Panels -->
+        <div class="garden-panels-wrapper">
+          <!-- Section 1: CEO Lai Souyiek Admiration & Pride -->
+          <section id="section-ceo" class="garden-panel active">
+            <div class="glass-panel-card ceo-showcase-panel">
+              <div class="ceo-showcase-grid">
+                <div class="ceo-portrait-col">
+                  <div class="ceo-big-display-wrap">
+                    <img src="/assets/ceo.png" alt="CEO Lai Souyiek" class="ceo-big-img" />
+                    <div class="big-ring-anim"></div>
+                    <div class="gold-badge-overlay">FOUNDER & CEO</div>
+                  </div>
+                </div>
+
+                <div class="ceo-info-col">
+                  <span class="panel-badge">CAMBODIAN ENTREPRENEUR</span>
+                  <h2 class="panel-heading">Lai Souyiek</h2>
+                  <p class="panel-subheading">CEO of Miss Sunflower Brand 🌻</p>
+                  
+                  <p class="panel-body">
+                    Created with love and admiration by a fan. We are so proud of CEO Lai Souyiek for building Miss Sunflower Brand into a shining symbol of warmth, confidence, and Cambodian beauty!
+                  </p>
+
+                  <blockquote class="panel-quote">
+                    "Turn your face toward the sun, and shadow will fall behind."
+                  </blockquote>
+
+                  <div class="ceo-pillars-mini">
+                    <span class="c-chip">✨ Radiant Confidence</span>
+                    <span class="c-chip">🇰🇭 Cambodian Pride</span>
+                    <span class="c-chip">🌻 Made by a Fan</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 2: Charity & Community Support (ជំនួយបរិច្ចាក) -->
+          <section id="section-charity" class="garden-panel">
+            <div class="glass-panel-card charity-showcase-panel">
+              <div class="charity-showcase-card">
+                <div class="family-image-frame">
+                  <img src="/assets/herfamily.jpg" alt="CEO Lai Souyiek and Her Husband Supporting Cambodia" class="family-img" />
+                  <div class="charity-gold-badge">🇰🇭 SUPPORTING CAMBODIA • ជំនួយបរិច្ចាក</div>
+                </div>
+
+                <div class="charity-info-col">
+                  <span class="panel-badge">CHARITY & DONATIONS (ជំនួយបរិច្ចាក)</span>
+                  <h2 class="panel-heading">Always Supporting Cambodia</h2>
+                  <p class="panel-subheading">CEO Lai Souyiek & Her Husband's Generous Hearts</p>
+                  
+                  <p class="panel-body">
+                    Beyond business, CEO Lai Souyiek and her husband have always stood by the Cambodian people, generously contributing charity donations (ជំនួយបរិច្ចាក), community aid, and continuous support to lift up Cambodian lives with love and hope.
+                  </p>
+
+                  <div class="ceo-pillars-mini">
+                    <span class="c-chip">❤️ Charitable Hearts (ជំនួយបរិច្ចាក)</span>
+                    <span class="c-chip">🇰🇭 Supporting Cambodia</span>
+                    <span class="c-chip">🌻 Spreading Hope</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 3: Interactive 3D Studio & Lighting Presets -->
+          <section id="section-3d-garden" class="garden-panel">
+            <div class="glass-panel-card text-center">
+              <div class="panel-badge">3D INTERACTIVE STUDIO</div>
+              <h2 class="panel-heading">Explore 3D Sunflower</h2>
+              <p class="panel-subheading">Drag mouse or touch to orbit 360° | Scroll / pinch to zoom</p>
+              
+              <div class="tod-bar">
+                <button class="tod-btn active" data-tod="sunrise">Dawn Sunrise 🌅</button>
+                <button class="tod-btn" data-tod="noon">Golden Noon ☀️</button>
+                <button class="tod-btn" data-tod="golden">Golden Hour 🌾</button>
+                <button class="tod-btn" data-tod="night">Soft Moonlight 🌙</button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
